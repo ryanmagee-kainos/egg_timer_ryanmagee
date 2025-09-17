@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Egg Timer</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-yellow-50 min-h-screen flex items-center justify-center">
+  <div class="bg-white shadow-lg rounded-lg p-4 sm:p-8 w-full max-w-xs sm:max-w-sm md:max-w-md text-center">
+    <h1 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-yellow-600">Egg Timer</h1>
+    <div class="mb-4">
+      <label class="block mb-2 font-semibold text-gray-700 text-base sm:text-lg">How do you want your egg boiled?</label>
+      <div class="flex flex-col sm:flex-row justify-center items-center sm:space-x-4 space-y-2 sm:space-y-0 mb-2">
+        <label class="inline-flex items-center">
+          <input type="radio" name="doneness" id="soft" value="soft" class="form-radio text-yellow-500" />
+          <span class="ml-2 text-sm sm:text-base">Soft (4:00)</span>
+        </label>
+        <label class="inline-flex items-center">
+          <input type="radio" name="doneness" id="medium" value="medium" class="form-radio text-yellow-500" />
+          <span class="ml-2 text-sm sm:text-base">Medium (7:00)</span>
+        </label>
+        <label class="inline-flex items-center">
+          <input type="radio" name="doneness" id="hard" value="hard" class="form-radio text-yellow-500" />
+          <span class="ml-2 text-sm sm:text-base">Hard (10:00)</span>
+        </label>
+      </div>
+    </div>
+    <div class="mb-4 flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-2">
+      <input id="minutes" type="number" min="0" max="59" value="0" class="w-full sm:w-16 p-2 border rounded text-center text-base" placeholder="MM">
+      <span class="text-2xl font-bold">:</span>
+      <input id="seconds" type="number" min="0" max="59" value="0" class="w-full sm:w-16 p-2 border rounded text-center text-base" placeholder="SS">
+    </div>
+
+    <!-- Toggle switch for circular timer -->
+    <div class="flex items-center justify-center mb-4">
+      <label for="toggle-circular" class="mr-2 font-medium text-gray-700">Circular Timer</label>
+      <input id="toggle-circular" type="checkbox" class="form-checkbox h-5 w-5 text-yellow-500" />
+    </div>
+
+    <!-- Circular timer SVG (hidden by default) -->
+    <div id="circular-timer-container" class="flex justify-center mb-4 hidden">
+      <svg id="circular-timer" width="120" height="120" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="54" stroke="#e5e7eb" stroke-width="12" fill="none" />
+        <circle id="circular-progress" cx="60" cy="60" r="54" stroke="#f59e42" stroke-width="12" fill="none" stroke-linecap="round" stroke-dasharray="339.292" stroke-dashoffset="0" transform="rotate(-90 60 60)" />
+      </svg>
+    </div>
+    <div id="display" class="text-4xl sm:text-5xl font-mono mb-4 sm:mb-6">00:00</div>
+    <div class="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-4 mb-4">
+      <button id="start" class="w-full sm:w-auto bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded">Start</button>
+      <button id="pause" class="w-full sm:w-auto bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">Pause</button>
+      <button id="reset" class="w-full sm:w-auto bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 rounded">Reset</button>
+    </div>
+    <div id="alarm" class="hidden text-base sm:text-lg text-green-600 font-semibold">Time's up!</div>
+  </div>
+  <script src="egg-timer.js"></script>
+</body>
+</html>
